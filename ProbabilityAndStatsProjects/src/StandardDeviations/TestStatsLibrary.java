@@ -10,6 +10,9 @@ public class TestStatsLibrary {
 		StatsLibrary test = new StatsLibrary();
 		ArrayList<Integer> someNumbers = new ArrayList<>();
 		
+		
+
+		
 		someNumbers.add(5);
 		someNumbers.add(2);
 		someNumbers.add(2);
@@ -26,8 +29,8 @@ public class TestStatsLibrary {
 		
 		System.out.println("Average of input: " + result);
 	
-		System.out.println(test.findMedian(someNumbers));
-		System.out.println(test.findMode(someNumbers));
+		System.out.println("The median is: " + test.findMedian(someNumbers));
+		System.out.println("The mode is: " + test.findMode(someNumbers));
 		
 		
 		

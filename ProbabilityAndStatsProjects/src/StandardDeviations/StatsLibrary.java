@@ -12,7 +12,7 @@ import java.util.Collections;
  */
 public class StatsLibrary {
 	
-	private ArrayList<Integer> arr = new ArrayList<Integer>();
+
 	
 	
 	public double findMean(ArrayList<Integer> arr) {
@@ -29,7 +29,7 @@ public class StatsLibrary {
 	}
 	
 	
-	public String findMedian(ArrayList<Integer> arr) {
+	public double findMedian(ArrayList<Integer> arr) {
 		
 
 		double result = 0;
@@ -41,6 +41,7 @@ public class StatsLibrary {
 			tempArr.add(arr.get(i));
 		}
 		
+		//https://www.geeksforgeeks.org/how-to-sort-an-arraylist-in-ascending-order-in-java/
 		Collections.sort(tempArr);
 		
 		System.out.println(tempArr);
@@ -53,41 +54,45 @@ public class StatsLibrary {
 			//System.out.println(tempArr.get((tempArr.size()/2)-1));
 			//System.out.println(tempArr.size()%2);
 			
-		return ("The median is: " + result);
+		return result;
 		
 	}
 	
 	
 	//Should return mode, but if there are multiple modes
 	//program should return null
-	public String findMode(ArrayList<Integer> arr) {
+	public Integer findMode(ArrayList<Integer> arr) {
 		
 	
 		int highCount = 0;
-		int result = 0;
+		Integer result = 0;
 		
 		for (int i = 0; i < arr.size(); i++) {
 			
 			int count = 0;
-			for (int g = 1; g < arr.size(); g++) {
+			for (int g = 0; g < arr.size(); g++) {
 				if (arr.get(i)==arr.get(g)) {
 					count++;
 					//System.out.println("The i is: " + i);	
 					//System.out.println("The g is: " + g);	
 					
 				}
-			//System.out.println("The total count is: " + count);	
+				
 			}
+			//System.out.println("The total count is: " + count + " and value was : " + arr.get(i));
 			if (count > highCount) {
 				highCount = count;
 				result = arr.get(i);
+			}
+			else if (count == highCount & arr.get(i)!= result) {
+				result = null;
 			}
 			
 			//System.out.println("The highCount is: " + highCount);	
 			
 		}
 		
-		return ("The mode is: " + result);
+		return result;
 		
 	}
 
