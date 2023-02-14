@@ -31,9 +31,15 @@ public class TestStatsLibrary {
 	
 		System.out.println("The median is: " + test.findMedian(someNumbers));
 		System.out.println("The mode is: " + test.findMode(someNumbers));
+		double meanOfTest = test.findMean(someNumbers);
+		System.out.println("The standard deviation is: " + test.standardDeviation(someNumbers, meanOfTest));
 		
+		StatsLibrary test2 = new StatsLibrary();
 		
-		
+		System.out.println("The factorial of 15 is: " + test2.findFactorial(15));
+		System.out.println("The permutation is: " + test2.findPermutation(2,3));
+		System.out.println("The combination is: " + test2.findCombination(9,7));
+
 	}
 	
 	

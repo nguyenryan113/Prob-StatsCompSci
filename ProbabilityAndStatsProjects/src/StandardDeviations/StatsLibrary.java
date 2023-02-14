@@ -14,7 +14,11 @@ public class StatsLibrary {
 	
 
 	
-	
+	/**
+	 * Calculates the mean from a given ArrayList of integers
+	 * @param arr a given array list
+	 * @return the mean as a double
+	 */
 	public double findMean(ArrayList<Integer> arr) {
 		
 		double total = 0;
@@ -28,7 +32,11 @@ public class StatsLibrary {
 		
 	}
 	
-	
+	/**
+	 * Finds the median of a given array list
+	 * @param arr a given array list
+	 * @return the median
+	 */
 	public double findMedian(ArrayList<Integer> arr) {
 		
 
@@ -61,6 +69,12 @@ public class StatsLibrary {
 	
 	//Should return mode, but if there are multiple modes
 	//program should return null
+	
+	/**
+	 * Finds the mode of a given array list
+	 * @param arr a given arraylist
+	 * @return the mode
+	 */
 	public Integer findMode(ArrayList<Integer> arr) {
 		
 	
@@ -95,10 +109,85 @@ public class StatsLibrary {
 		return result;
 		
 	}
+	
+	/**
+	 * Calculates the standard deviation of a given array list
+	 * @param arr the given array list
+	 * @param mean the mean of the array list
+	 * @return the standard deviation
+	 */
+	public double standardDeviation(ArrayList<Integer> arr, double mean) {
+		
+		double count = 0.0;
 
+		
+		for(int i = 0; i < arr.size(); i++) {
+			
+			count += (Math.pow(arr.get(i)-mean, 2));
+			
+		}
+		
+		count = count/arr.size();
+		count = Math.sqrt(count);
+		
+		return count;
+		
+	}
+	
+	/**
+	 * Calculates the factorial of a number
+	 * @param number is the inputed number that we want to find the factorial of
+	 * @return the factorial of the number
+	 */
+	public double findFactorial (int number) {
+		
+		int count = 1;
+		for (int i = 1; i <= number; i++) {
+			
+			count = count * i;
+			
+		}
+		
+		return count;
+	
+	}
+	
+	/**
+	 * Calculates the permutation
+	 * @param n
+	 * @param r
+	 * @return
+	 */
+	public double findPermutation(int n, int r){
+		
+		double total = (findFactorial(n))/(findFactorial(n-r));
+				
+		return total;
+	}
+	
+	/**
+	 * Calculates the combination
+	 * @param n
+	 * @param r
+	 * @return
+	 */
+	public double findCombination(int n, int r){
+		
+		double total = (findFactorial(n))/((findFactorial(r))*(findFactorial(n-r)));
+		
+		return total;
+		
+	}
 
+	/**
+	 * 
+	 * @param arr
+	 * @return
+	 */
 	public String toString(ArrayList<Integer> arr) {
+		
 		return ("The array is " + arr + " Arr.size(): " + arr.size());
+		
 	}
 	
 	
