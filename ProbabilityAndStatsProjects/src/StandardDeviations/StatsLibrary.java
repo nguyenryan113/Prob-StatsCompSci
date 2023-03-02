@@ -193,9 +193,13 @@ public class StatsLibrary {
 	
 	public double binomialDistribution(double n, double y, double p) {
 		
+		//Combination
 		double combin = findCombination(n,y);
+		//p^(n-1)
 		double pToPower = Math.pow(p, (n-1));
+		//(1-p)^(n-y)
 		double qToPower = Math.pow((1-p), (n-y));
+		
 		
 		double total = (combin * pToPower * qToPower);
 		return total;
@@ -205,9 +209,46 @@ public class StatsLibrary {
 	
 	public double geometricDistribution(double p, double y) {
 		
-		double total = (Math.pow(1-p, (y-1))* p);
+		double total = (Math.pow((1-p), (y-1))* p);
 		return total;
 		
+		
+	}
+	
+	public String testAll() {
+		
+		ArrayList<Integer> someNumbers = new ArrayList<>();
+		
+		
+
+		
+		someNumbers.add(5);
+		someNumbers.add(2);
+		someNumbers.add(2);
+		someNumbers.add(20);
+		someNumbers.add(4);
+		someNumbers.add(10);
+		someNumbers.add(3);
+		someNumbers.add(17);
+		someNumbers.add(8);
+		someNumbers.add(8);
+		
+		
+		System.out.println(toString(someNumbers));
+		
+		System.out.println("Average of input: " + findMean(someNumbers));
+	
+		System.out.println("The median is: " + findMedian(someNumbers));
+		System.out.println("The mode is: " + findMode(someNumbers));
+		System.out.println("The standard deviation is: " + standardDeviation(someNumbers, findMean(someNumbers)));
+		
+		System.out.println("The factorial of 15 is: " + findFactorial(15));
+		System.out.println("The permutation is: " + findPermutation(2,3));
+		System.out.println("The combination is: " + findCombination(9,7));
+		System.out.println("The binomial distribution is : " + binomialDistribution(1,3,5));
+		System.out.println("The geometric distribution is: " + geometricDistribution(.35,10));
+		
+		return "Finished Testing";
 		
 	}
 	

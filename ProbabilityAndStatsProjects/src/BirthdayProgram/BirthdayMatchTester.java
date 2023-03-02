@@ -15,7 +15,7 @@ public class BirthdayMatchTester {
 		
 		BirthdayMatch test = new BirthdayMatch();
 		
-		System.out.println("The percentage of wins is: " + test.getPercentage(23, 1000) + "%");
+		System.out.println("The percentage of matches is: " + test.getPercentage(23, 1000) + "%");
 		
 		
 	}

@@ -20,14 +20,15 @@ public class DoorGame {
 	 * @return the amount of times you win after 10000 plays
 	 * 
 	 */
-	public int playGame(boolean switchChoice) {
+	public double playGame(boolean switchChoice) {
 		
+		//total win count for current game
 		int winCount = 0;
 		
 		//10000 plays
 		for (int i = 0; i < 10000; i++) {
 			
-			//Where the car is randomly
+			//Where the car is placed randomly
 			int carSpot = ThreadLocalRandom.current().nextInt(0,3);
 			
 			
@@ -82,9 +83,9 @@ public class DoorGame {
 			
 		}
 		
-		
-		
-		return winCount;
+		//Solving for the percentage
+		double percentage = ((double)winCount/10000)*100;
+		return percentage;
 		
 	}
 	
