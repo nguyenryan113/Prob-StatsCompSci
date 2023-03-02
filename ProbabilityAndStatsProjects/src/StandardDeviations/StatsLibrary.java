@@ -136,13 +136,13 @@ public class StatsLibrary {
 	
 	/**
 	 * Calculates the factorial of a number
-	 * @param number is the inputed number that we want to find the factorial of
+	 * @param n is the inputed number that we want to find the factorial of
 	 * @return the factorial of the number
 	 */
-	public double findFactorial (int number) {
+	public double findFactorial (double n) {
 		
 		int count = 1;
-		for (int i = 1; i <= number; i++) {
+		for (int i = 1; i <= n; i++) {
 			
 			count = count * i;
 			
@@ -158,7 +158,7 @@ public class StatsLibrary {
 	 * @param r
 	 * @return
 	 */
-	public double findPermutation(int n, int r){
+	public double findPermutation(double n, double r){
 		
 		double total = (findFactorial(n))/(findFactorial(n-r));
 				
@@ -168,12 +168,12 @@ public class StatsLibrary {
 	/**
 	 * Calculates the combination
 	 * @param n
-	 * @param r
+	 * @param y
 	 * @return
 	 */
-	public double findCombination(int n, int r){
+	public double findCombination(double n, double y){
 		
-		double total = (findFactorial(n))/((findFactorial(r))*(findFactorial(n-r)));
+		double total = (findFactorial(n))/((findFactorial(y))*(findFactorial(n-y)));
 		
 		return total;
 		
@@ -191,7 +191,25 @@ public class StatsLibrary {
 	}
 	
 	
+	public double binomialDistribution(double n, double y, double p) {
+		
+		double combin = findCombination(n,y);
+		double pToPower = Math.pow(p, (n-1));
+		double qToPower = Math.pow((1-p), (n-y));
+		
+		double total = (combin * pToPower * qToPower);
+		return total;
+		
+		
+	}
 	
+	public double geometricDistribution(double p, double y) {
+		
+		double total = (Math.pow(1-p, (y-1))* p);
+		return total;
+		
+		
+	}
 	
 	
 	

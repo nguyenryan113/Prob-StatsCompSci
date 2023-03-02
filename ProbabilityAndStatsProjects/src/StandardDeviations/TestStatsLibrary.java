@@ -22,6 +22,7 @@ public class TestStatsLibrary {
 		someNumbers.add(3);
 		someNumbers.add(17);
 		someNumbers.add(8);
+		someNumbers.add(8);
 		
 		double result = test.findMean(someNumbers);
 		
