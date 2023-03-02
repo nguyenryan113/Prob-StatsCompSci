@@ -256,7 +256,7 @@ public class StatsLibrary {
 		System.out.println("The mode is: " + findMode(someNumbers));
 		System.out.println("The standard deviation is: " + standardDeviation(someNumbers, findMean(someNumbers)));
 		
-		System.out.println("The factorial of 15 is: " + findFactorial(BigInteger.valueOf(15)));
+		System.out.println("The factorial of 50 is: " + findFactorial(BigInteger.valueOf(50)));
 		System.out.println("The permutation is: " + findPermutation(BigInteger.valueOf(2),BigInteger.valueOf(3)));
 		System.out.println("The combination is: " + findCombination(BigInteger.valueOf(9),BigInteger.valueOf(7)));
 		System.out.println("The binomial distribution is : " + binomialDistribution(5,3,.5));
