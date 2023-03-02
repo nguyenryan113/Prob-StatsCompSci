@@ -1,7 +1,5 @@
 package StandardDeviations;
 
-import java.util.ArrayList;
-
 public class TestStatsLibrary {
 
 	

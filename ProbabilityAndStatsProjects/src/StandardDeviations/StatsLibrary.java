@@ -4,6 +4,7 @@
 package StandardDeviations;
 
 import java.util.ArrayList;
+import java.math.BigInteger;
 import java.util.Collections;
 
 /**
@@ -12,7 +13,6 @@ import java.util.Collections;
  */
 public class StatsLibrary {
 	
-
 	
 	/**
 	 * Calculates the mean from a given ArrayList of integers
@@ -52,15 +52,12 @@ public class StatsLibrary {
 		//https://www.geeksforgeeks.org/how-to-sort-an-arraylist-in-ascending-order-in-java/
 		Collections.sort(tempArr);
 		
-		System.out.println(tempArr);
 		if (tempArr.size()%2 == 1) {
 			result = tempArr.get(arr.size()/2);
 		}
 		else
 			result = (((tempArr.get(tempArr.size()/2))+(tempArr.get((tempArr.size()/2)-1)))/2.0);
-			//System.out.println(tempArr.get(tempArr.size()/2));
-			//System.out.println(tempArr.get((tempArr.size()/2)-1));
-			//System.out.println(tempArr.size()%2);
+			
 			
 		return result;
 		
@@ -87,13 +84,11 @@ public class StatsLibrary {
 			for (int g = 0; g < arr.size(); g++) {
 				if (arr.get(i)==arr.get(g)) {
 					count++;
-					//System.out.println("The i is: " + i);	
-					//System.out.println("The g is: " + g);	
 					
 				}
 				
 			}
-			//System.out.println("The total count is: " + count + " and value was : " + arr.get(i));
+			
 			if (count > highCount) {
 				highCount = count;
 				result = arr.get(i);
@@ -102,7 +97,7 @@ public class StatsLibrary {
 				result = null;
 			}
 			
-			//System.out.println("The highCount is: " + highCount);	
+			
 			
 		}
 		
@@ -139,12 +134,13 @@ public class StatsLibrary {
 	 * @param n is the inputed number that we want to find the factorial of
 	 * @return the factorial of the number
 	 */
-	public double findFactorial (double n) {
+	public BigInteger findFactorial (BigInteger n) {
 		
-		int count = 1;
-		for (int i = 1; i <= n; i++) {
+		BigInteger count = BigInteger.valueOf(1);
+		
+		for (int i = 1; i <= n.intValue(); i++) {
 			
-			count = count * i;
+			count = count.multiply(BigInteger.valueOf(i));
 			
 		}
 		
@@ -154,35 +150,35 @@ public class StatsLibrary {
 	
 	/**
 	 * Calculates the permutation
-	 * @param n
-	 * @param r
-	 * @return
+	 * @param n the number of elements
+	 * @param r how many taken at a time
+	 * @return the permutation of n, r 
 	 */
-	public double findPermutation(double n, double r){
+	public BigInteger findPermutation(BigInteger n, BigInteger r){
 		
-		double total = (findFactorial(n))/(findFactorial(n-r));
+		BigInteger total = (findFactorial(n)).divide(findFactorial(n.subtract(r)));
 				
 		return total;
 	}
 	
 	/**
 	 * Calculates the combination
-	 * @param n
-	 * @param y
-	 * @return
+	 * @param n number of elements
+	 * @param y how many taken at a time
+	 * @return the combination of n, y
 	 */
-	public double findCombination(double n, double y){
+	public BigInteger findCombination(BigInteger n, BigInteger y){
 		
-		double total = (findFactorial(n))/((findFactorial(y))*(findFactorial(n-y)));
+		BigInteger total = (findFactorial(n)).divide((findFactorial(y)).multiply(findFactorial(n.subtract(y))));
 		
 		return total;
 		
 	}
 
 	/**
-	 * 
-	 * @param arr
-	 * @return
+	 * Converts an array to a string and tells the user what is in the array and the size.
+	 * @param arr the array that wants to be outputted.
+	 * @return the array as a String and tells us the size.
 	 */
 	public String toString(ArrayList<Integer> arr) {
 		
@@ -190,23 +186,37 @@ public class StatsLibrary {
 		
 	}
 	
-	
-	public double binomialDistribution(double n, double y, double p) {
+	/**
+	 * Finds the binomial of the inputted variables
+	 * @param n is the number of trials
+	 * @param y is the number of successes
+	 * @param p is the probability of success
+	 * @return returns the binomial distribution
+	 */
+	public double binomialDistribution(int n, int y, double p) {
 		
 		//Combination
-		double combin = findCombination(n,y);
-		//p^(n-1)
-		double pToPower = Math.pow(p, (n-1));
+		int combin = findCombination(BigInteger.valueOf(n),BigInteger.valueOf(y)).intValue();
+
+		//p^y
+		double pToPower = Math.pow(p, y);
+
 		//(1-p)^(n-y)
 		double qToPower = Math.pow((1-p), (n-y));
+
 		
-		
-		double total = (combin * pToPower * qToPower);
+		double total = ((double)combin * pToPower * qToPower);
 		return total;
 		
 		
 	}
 	
+	/**
+	 * Finds the geometric distribution of the inputted variables
+	 * @param p is the probability of success
+	 * @param y is the number of trials up to and including the number of success
+	 * @return returns the geometric distribution 
+	 */
 	public double geometricDistribution(double p, double y) {
 		
 		double total = (Math.pow((1-p), (y-1))* p);
@@ -215,6 +225,10 @@ public class StatsLibrary {
 		
 	}
 	
+	/**
+	 * Tests all the methods in the class
+	 * @return confirms that the testing is finished
+	 */
 	public String testAll() {
 		
 		ArrayList<Integer> someNumbers = new ArrayList<>();
@@ -242,10 +256,10 @@ public class StatsLibrary {
 		System.out.println("The mode is: " + findMode(someNumbers));
 		System.out.println("The standard deviation is: " + standardDeviation(someNumbers, findMean(someNumbers)));
 		
-		System.out.println("The factorial of 15 is: " + findFactorial(15));
-		System.out.println("The permutation is: " + findPermutation(2,3));
-		System.out.println("The combination is: " + findCombination(9,7));
-		System.out.println("The binomial distribution is : " + binomialDistribution(1,3,5));
+		System.out.println("The factorial of 15 is: " + findFactorial(BigInteger.valueOf(15)));
+		System.out.println("The permutation is: " + findPermutation(BigInteger.valueOf(2),BigInteger.valueOf(3)));
+		System.out.println("The combination is: " + findCombination(BigInteger.valueOf(9),BigInteger.valueOf(7)));
+		System.out.println("The binomial distribution is : " + binomialDistribution(5,3,.5));
 		System.out.println("The geometric distribution is: " + geometricDistribution(.35,10));
 		
 		return "Finished Testing";
