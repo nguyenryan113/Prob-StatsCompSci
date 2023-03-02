@@ -59,9 +59,11 @@ public class SetOperations {
 		
 		ArrayList<Integer> newArr = new ArrayList<Integer>();
 		
+		//sorts both arrays
 		Collections.sort(arr1);
 		Collections.sort(arr2);
 		
+		//Goes through each element of both arrays and adds them to the new array only if they contain both elements
 		for(int i = 0 ; i < arr1.size(); i++) {
 			
 			for(int j = 0 ; j < arr2.size()-1; j++) {
@@ -75,6 +77,7 @@ public class SetOperations {
 			}
 		}
 		
+		//After every common element from both array is added, 
 		newArr = removeDuplicates(newArr);
 
 		return newArr;
